@@ -1,220 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React & Frontend Modularisation</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Refresher & Frontend Modularisation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/night.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css">
-    <style>
-        :root {
-            --main-bg-color: #191919;
-            --main-text-color: #f5f5f5;
-            --accent-color: #61dafb;
-            --secondary-color: #f0db4f;
-            --code-bg: #2d2d2d;
-        }
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-        .reveal {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .reveal h1,
-        .reveal h2,
-        .reveal h3,
-        .reveal h4 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--accent-color);
-            text-transform: none;
-            margin-bottom: 20px;
-        }
-
-        .reveal h1 {
-            font-size: 2.2em;
-            font-weight: 600;
-        }
-
-        .reveal h2 {
-            font-size: 1.6em;
-            font-weight: 500;
-            color: var(--secondary-color);
-        }
-
-        .reveal h3 {
-            font-size: 1.3em;
-        }
-
-        .reveal h4 {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-        }
-
-        .reveal p,
-        .reveal li {
-            font-size: 1em;
-            line-height: 1.4;
-            margin-bottom: 0.6em;
-        }
-
-        .reveal code {
-            background-color: var(--code-bg);
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-family: Consolas, Monaco, 'Andale Mono', monospace;
-            font-size: 0.9em;
-        }
-
-        .reveal pre {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-
-        .reveal pre code {
-            padding: 12px;
-            line-height: 1.3;
-            font-size: 0.75em;
-            max-height: 350px;
-            overflow-y: auto;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .centered-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .frontend-logo {
-            background-color: #61dafb;
-            color: #20232a;
-            font-weight: bold;
-            padding: 30px;
-            font-size: 100px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 0.9em;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            border: 1px solid #444;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .comparison-table th {
-            background-color: var(--accent-color);
-            color: #20232a;
-        }
-
-        .folder-structure {
-            font-family: 'Courier New', monospace;
-            background-color: var(--code-bg);
-            padding: 12px;
-            border-radius: 5px;
-            text-align: left;
-            font-size: 0.7em;
-            line-height: 1.3;
-        }
-
-        .small-code {
-            font-size: 0.7em !important;
-        }
-
-        .compact-list li {
-            font-size: 0.85em;
-            margin-bottom: 0.3em;
-        }
-
-        .extra-compact li {
-            font-size: 0.8em;
-            margin-bottom: 0.2em;
-        }
-
-        .two-column-code {
-            columns: 2;
-            column-gap: 20px;
-        }
-    </style>
-</head>
-
-<body>
+  <body>
     <div class="reveal">
+      <div class="slides">
+        <!-- Title Slide -->
+        <section>
+          <div class="centered-content">
+            <svg
+              class="react-logo"
+              viewBox="0 0 841.9 595.3"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g fill="none" stroke="#61DAFB" stroke-width="20">
+                <ellipse cx="420.9" cy="296.5" rx="165" ry="64" />
+                <ellipse
+                  cx="420.9"
+                  cy="296.5"
+                  rx="165"
+                  ry="64"
+                  transform="rotate(60 420.9 296.5)"
+                />
+                <ellipse
+                  cx="420.9"
+                  cy="296.5"
+                  rx="165"
+                  ry="64"
+                  transform="rotate(120 420.9 296.5)"
+                />
+              </g>
+              <circle cx="420.9" cy="296.5" r="35" fill="#61DAFB" />
+            </svg>
+            <h1>React & Frontend Modularisation</h1>
+            <div class="presented-by">
+              <span class="presented-text">Presented by</span>
 
-        <div class="slides">
-            <!-- Title Slide -->
-            <section>
-                <div class="centered-content">
-                    <div class="frontend-logo">⚛</div>
-                    <h1>React Refresher & Frontend Modularisation</h1>
-                    <p>Lambda IITH - Dev Night</p>
-                </div>
-            </section>
+              <div class="presenter">
+                <img src="images/lambda-logo.png" alt="Lambda IITH Logo" />
+                <span>Lambda IITH</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <!-- Table of Contents -->
-            <section>
-                <h2>What We'll Cover</h2>
-                <div class="grid-2">
-                    <div>
-                        <ul style="font-size: 22px;">
-                            <li>React Basics Recap</li>
-                            <li>JSX & Components</li>
-                            <li>Props vs State</li>
-                            <li>Hooks Overview</li>
-                            <li>Component Lifecycle</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul style="font-size: 22px;">
-                            <li>Frontend Architecture</li>
-                            <li>API Layer Design</li>
-                            <li>Auth Store</li>
-                            <li>Reusable Components</li>
-                            <li>React Server Components</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+        <!-- Table of Contents -->
+        <section>
+          <h2>What We'll Cover</h2>
+          <div class="grid-2" style="margin-top: 50px">
+            <div>
+              <ul style="font-size: 30px">
+                <li>React Basics</li>
+                <li>JSX & Components</li>
+                <li>Props vs State</li>
+                <li>Hooks Overview</li>
+                <li>Component Lifecycle</li>
+              </ul>
+            </div>
+            <div>
+              <ul style="font-size: 30px">
+                <li>Frontend Architecture</li>
+                <li>API Layer Design</li>
+                <li>Auth Store</li>
+                <li>Reusable Components</li>
+                <li>React Server Components</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-            <!-- React Basics -->
-            <section>
-                <h2>What is React?</h2>
-                <ul class="extra-compact">
-                    <li><strong>JavaScript Library</strong> - Not a framework</li>
-                    <li><strong>Component-based</strong> - UI as component tree</li>
-                    <li><strong>Declarative</strong> - Describe what, not how</li>
-                    <li><strong>Virtual DOM</strong> - Efficient updates</li>
-                    <li><strong>Ecosystem</strong> - Huge community & tools</li>
-                </ul>
-                <p style="font-style: italic; margin-top: 15px; font-size: 0.8em;">
-                    "Learn once, write anywhere" - React, React Native, React Server Components
-                </p>
-            </section>
+        <!-- React Basics -->
+        <section class="react-intro">
+          <div class="react-title-container">
+            <h2 class="react-title">What is React?</h2>
+          </div>
+          <div class="react-content-container fragment">
+            <ul class="extra-compact">
+              <li>
+                <strong>JavaScript Library</strong> for building user interfaces
+              </li>
+              <li><strong>Component-based</strong> architecture</li>
+              <li>
+                <strong>JSX (Javascript XML)</strong> write UI using HTML-like
+                syntax inside JavaScript
+                <pre
+                  style="margin-top: 10px; font-size: 1em"
+                ><code class="language-js">const Welcome = () => &lt;h1&gt;Hello World&lt;/h1&gt;;</code></pre>
+              </li>
+              <li>Efficient updates using <strong>Virtual DOM</strong></li>
+            </ul>
+            <p style="font-style: italic; margin-top: 15px; font-size: 0.8em">
+              "Learn once, write anywhere" - React, React Native, React Server
+              Components
+            </p>
+          </div>
+        </section>
 
-            <!-- Virtual DOM Concept -->
-            <section>
-                <h2>Virtual DOM Explained</h2>
-                <pre><code class="language-js small-code">
+        <!-- Virtual DOM Concept -->
+        <section>
+          <h2>Virtual DOM</h2>
+          <pre><code class="language-js small-code">
 // Instead of directly manipulating DOM:
 document.getElementById('count').innerHTML = count;
 
@@ -226,16 +139,16 @@ function Counter() {
 
 // React efficiently updates only what changed
                 </code></pre>
-                <div style="font-size: 0.9em;">
-                    <p>Virtual DOM = JavaScript representation of real DOM</p>
-                    <p>React compares (diffs) old vs new Virtual DOM trees</p>
-                </div>
-            </section>
+          <div style="font-size: 0.7em">
+            <p>Virtual DOM = JavaScript representation of real DOM</p>
+            <p>React compares (diffs) old vs new Virtual DOM trees</p>
+          </div>
+        </section>
 
-            <!-- JSX Deep Dive -->
-            <section>
-                <h2>JSX - JavaScript XML</h2>
-                <pre><code class="language-js small-code">
+        <!-- JSX Deep Dive -->
+        <section>
+          <h2>JSX - JavaScript XML</h2>
+          <pre><code class="language-js small-code">
 // JSX is syntactic sugar for React.createElement()
 const element = &lt;h1&gt;Hello, World!&lt;/h1&gt;;
 
@@ -244,17 +157,17 @@ const element = React.createElement(
   'h1', null, 'Hello, World!'
 );
                 </code></pre>
-                <ul class="compact-list">
-                    <li>Must return single parent element (or Fragment)</li>
-                    <li>Use <code>className</code> instead of <code>class</code></li>
-                    <li>JavaScript expressions in <code>{}</code></li>
-                </ul>
-            </section>
+          <ul class="compact-list">
+            <li>Must return single parent element (or Fragment)</li>
+            <li>Use <code>className</code> instead of <code>class</code></li>
+            <li>JavaScript expressions in <code>{}</code></li>
+          </ul>
+        </section>
 
-            <!-- JSX Rules & Examples -->
-            <section>
-                <h2>JSX Rules & Best Practices</h2>
-                <pre><code class="language-js small-code">
+        <!-- JSX Rules & Examples -->
+        <section>
+          <h2>JSX Rules & Best Practices</h2>
+          <pre><code class="language-js small-code" style="max-height: 520px">
 function UserCard({ user }) {
   return (
     &lt;&gt; {/* React.Fragment shorthand */}
@@ -272,17 +185,19 @@ function UserCard({ user }) {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Component Types -->
-            <section>
-                <h2>Types of Components</h2>
-                <div class="grid-2">
-                    <div>
-                        <h4>Functional Components</h4>
-                        <pre><code class="language-js small-code">
+        <!-- Component Types -->
+        <section>
+          <h2>Types of Components</h2>
+          <div class="grid-2">
+            <div style="width: 120%">
+              <h4>Functional Components</h4>
+              <pre><code class="language-js small-code" >
 function Welcome(props) {
-  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+  return {
+    &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+  };
 }
 
 // Arrow function syntax
@@ -290,25 +205,27 @@ const Welcome = (props) => {
   return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
 };
                         </code></pre>
-                    </div>
-                    <div>
-                        <h4>Class Components (Legacy)</h4>
-                        <pre><code class="language-js small-code">
+            </div>
+            <div>
+              <h4>Class Components (Legacy)</h4>
+              <pre><code class="language-js small-code" style="max-height: 300px; width: 130%">
 class Welcome extends React.Component {
   render() {
     return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
   }
 }
                         </code></pre>
-                        <p style="font-size: 0.8em;"><em>Use functional components + hooks instead</em></p>
-                    </div>
-                </div>
-            </section>
+              <p style="font-size: 0.8em">
+                <em>Use functional components + hooks instead</em>
+              </p>
+            </div>
+          </div>
+        </section>
 
-            <!-- Props Deep Dive -->
-            <section>
-                <h2>Props - Component Communication</h2>
-                <pre><code class="language-js small-code">
+        <!-- Props Deep Dive -->
+        <section>
+          <h2 style="font-size: 50px">Props - Component Communication</h2>
+          <pre><code class="language-js small-code" style="width: 110%; max-height: 500px">
 // Parent component
 function App() {
   const user = { name: 'Alice', age: 25, skills: ['React', 'Node.js'] };
@@ -335,48 +252,48 @@ function UserProfile({ user, isEditable, onEdit }) {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Props vs State Comparison -->
-            <section>
-                <h2>Props vs State</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Aspect</th>
-                            <th>Props</th>
-                            <th>State</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Source</td>
-                            <td>Passed from parent</td>
-                            <td>Managed internally</td>
-                        </tr>
-                        <tr>
-                            <td>Mutability</td>
-                            <td>Read-only</td>
-                            <td>Mutable via hooks</td>
-                        </tr>
-                        <tr>
-                            <td>Purpose</td>
-                            <td>Configuration & data flow</td>
-                            <td>Component's internal data</td>
-                        </tr>
-                        <tr>
-                            <td>Re-render trigger</td>
-                            <td>When parent re-renders</td>
-                            <td>When state changes</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <!-- Props vs State Comparison -->
+        <section>
+          <h2>Props vs State</h2>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Props</th>
+                <th>State</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Source</td>
+                <td>Passed from parent</td>
+                <td>Managed internally</td>
+              </tr>
+              <tr>
+                <td>Mutability</td>
+                <td>Read-only</td>
+                <td>Mutable via hooks</td>
+              </tr>
+              <tr>
+                <td>Purpose</td>
+                <td>Configuration & data flow</td>
+                <td>Component's internal data</td>
+              </tr>
+              <tr>
+                <td>Re-render trigger</td>
+                <td>When parent re-renders</td>
+                <td>When state changes</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-            <!-- State Example -->
-            <section>
-                <h2>State Management Example</h2>
-                <pre><code class="language-js small-code">
+        <!-- State Example -->
+        <section>
+          <h2 style="font-size: 1.2em">State Management Example</h2>
+          <pre><code class="language-js small-code" style="width: 120%; max-height: 450px;">
 function TodoApp() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -409,38 +326,38 @@ function TodoApp() {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Hooks Overview -->
-            <section>
-                <h2>React Hooks</h2>
-                <div class="grid-2">
-                    <div>
-                        <ul class="extra-compact">
-                            <li><strong>useState</strong> - Component state</li>
-                            <li><strong>useEffect</strong> - Side effects</li>
-                            <li><strong>useContext</strong> - Context access</li>
-                            <li><strong>useReducer</strong> - Complex state</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="extra-compact">
-                            <li><strong>useMemo</strong> - Memoize values</li>
-                            <li><strong>useCallback</strong> - Memoize functions</li>
-                            <li><strong>useRef</strong> - DOM access</li>
-                            <li><strong>Custom Hooks</strong> - Reusable logic</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="margin-top: 15px; font-size: 0.8em;">
-                    <em>Hooks enable state and lifecycle in functional components</em>
-                </p>
-            </section>
+        <!-- Hooks Overview -->
+        <section>
+          <h2>React Hooks</h2>
+          <div class="grid-2">
+            <div>
+              <ul class="extra-compact">
+                <li><strong>useState</strong> - Component state</li>
+                <li><strong>useEffect</strong> - Side effects</li>
+                <li><strong>useContext</strong> - Context access</li>
+                <li><strong>useReducer</strong> - Complex state</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="extra-compact">
+                <li><strong>useMemo</strong> - Memoize values</li>
+                <li><strong>useCallback</strong> - Memoize functions</li>
+                <li><strong>useRef</strong> - DOM access</li>
+                <li><strong>Custom Hooks</strong> - Reusable logic</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top: 15px; font-size: 0.8em">
+            <em>Hooks enable state and lifecycle in functional components</em>
+          </p>
+        </section>
 
-            <!-- useEffect Deep Dive -->
-            <section>
-                <h2>useEffect - Side Effects</h2>
-                <pre><code class="language-js small-code">
+        <!-- useEffect Deep Dive -->
+        <section>
+          <h2 style="font-size: 1.2em">useEffect - Side Effects</h2>
+          <pre><code class="language-js small-code" style="max-height: 450px">
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -471,12 +388,12 @@ function UserProfile({ userId }) {
   return &lt;div&gt;Welcome, {user?.name}!&lt;/div&gt;;
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Custom Hooks -->
-            <section>
-                <h2>Custom Hooks - Reusable Logic</h2>
-                <pre><code class="language-js small-code">
+        <!-- Custom Hooks -->
+        <section>
+          <h2 style="font-size: 1.2em">Custom Hooks - Reusable Logic</h2>
+          <pre><code class="language-js small-code" style="max-height: 450px">
 // Custom hook for API calls
 function useApi(url) {
   const [data, setData] = useState(null);
@@ -515,12 +432,12 @@ function UserList() {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Component Lifecycle -->
-            <section>
-                <h2>Component Lifecycle with Hooks</h2>
-                <pre><code class="language-js small-code">
+        <!-- Component Lifecycle -->
+        <section>
+          <h2 style="font-size: 1.2em">Component Lifecycle with Hooks</h2>
+          <pre><code class="language-js small-code" style="max-height: 450px">
 function LifecycleDemo() {
   const [count, setCount] = useState(0);
 
@@ -554,45 +471,51 @@ function LifecycleDemo() {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Frontend Architecture Introduction -->
-            <section>
-                <h2>Frontend Architecture</h2>
-                <ul class="extra-compact">
-                    <li><strong>Separation of Concerns</strong> - Single responsibility</li>
-                    <li><strong>Modularity</strong> - Independent, reusable pieces</li>
-                    <li><strong>Scalability</strong> - Easy to add features</li>
-                    <li><strong>Maintainability</strong> - Easy to understand & modify</li>
-                    <li><strong>Testability</strong> - Isolated testing</li>
-                    <li><strong>Performance</strong> - Efficient loading & rendering</li>
-                </ul>
-            </section>
+        <!-- Frontend Architecture Introduction -->
+        <section>
+          <h2>Frontend Architecture</h2>
+          <ul class="extra-compact">
+            <li>
+              <strong>Separation of Concerns</strong> - Single responsibility
+            </li>
+            <li><strong>Modularity</strong> - Independent, reusable pieces</li>
+            <li><strong>Scalability</strong> - Easy to add features</li>
+            <li>
+              <strong>Maintainability</strong> - Easy to understand & modify
+            </li>
+            <li><strong>Testability</strong> - Isolated testing</li>
+            <li>
+              <strong>Performance</strong> - Efficient loading & rendering
+            </li>
+          </ul>
+        </section>
 
-            <!-- Folder Structure -->
-            <section>
-                <h2>Folder Structure</h2>
-                <div class="folder-structure">
-src/<br>
-├── components/         # Reusable UI<br>
-│   ├── common/        # Button, Modal<br>
-│   ├── forms/         # Form components<br>
-│   └── layout/        # Header, Sidebar<br>
-├── pages/             # Page components<br>
-├── services/          # API calls<br>
-│   ├── api.js         # Base config<br>
-│   └── userService.js # User APIs<br>
-├── store/             # State management<br>
-├── hooks/             # Custom hooks<br>
-├── utils/             # Utilities<br>
-└── types/             # TypeScript types
-                </div>
-            </section>
+        <!-- Folder Structure -->
+        <section>
+          <h2>Folder Structure</h2>
+          <div class="folder-structure">
+            src/<br />
+            ├── components/ # Reusable UI<br />
+            │ ├── common/ # Button, Modal<br />
+            │ ├── forms/ # Form components<br />
+            │ └── layout/ # Header, Sidebar<br />
+            ├── pages/ # Page components<br />
+            ├── services/ # API calls<br />
+            │ ├── api.js # Base config<br />
+            │ └── userService.js # User APIs<br />
+            ├── store/ # State management<br />
+            ├── hooks/ # Custom hooks<br />
+            ├── utils/ # Utilities<br />
+            └── types/ # TypeScript types
+          </div>
+        </section>
 
-            <!-- API Layer Design -->
-            <section>
-                <h2>API Layer - Centralized Data Fetching</h2>
-                <pre><code class="language-js small-code">
+        <!-- API Layer Design -->
+        <section>
+          <h2 style="font-size: 1em">API Layer - Centralized Data Fetching</h2>
+          <pre><code class="language-js small-code" style="width: 110%; max-height: 500px ">
 // services/api.js - Base configuration
 import axios from 'axios';
 
@@ -623,12 +546,12 @@ api.interceptors.response.use(
 
 export default api;
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Service Layer Example -->
-            <section>
-                <h2>Service Layer Example</h2>
-                <pre><code class="language-js small-code">
+        <!-- Service Layer Example -->
+        <section>
+          <h2 style="font-size: 1.2em">Service Layer Example</h2>
+          <pre><code class="language-js small-code" style="width: 110%; max-height: 450px;">
 // services/userService.js
 import api from './api';
 
@@ -664,12 +587,12 @@ export const userService = {
   }
 };
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Auth Store with Zustand -->
-            <section>
-                <h2>Auth Store - State Management</h2>
-                <pre><code class="language-js small-code">
+        <!-- Auth Store with Zustand -->
+        <section>
+          <h2 style="font-size: 1.2em">Auth Store - State Management</h2>
+          <pre><code class="language-js small-code" style="max-height: 450px">
 // store/authStore.js - Using Zustand
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -709,12 +632,12 @@ export const useAuthStore = create(
   )
 );
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Reusable Components -->
-            <section>
-                <h2>Building Reusable Components</h2>
-                <pre><code class="language-js small-code">
+        <!-- Reusable Components -->
+        <section>
+          <h2 style="font-size: 1.2em">Building Reusable Components</h2>
+          <pre><code class="language-js small-code" style="max-height: 450px;">
 // components/common/Button.jsx
 import React from 'react';
 
@@ -748,12 +671,12 @@ export const Button = ({
 // &lt;Button onClick={handleSave}&gt;Save&lt;/Button&gt;
 // &lt;Button variant="secondary" size="small"&gt;Cancel&lt;/Button&gt;
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Component Composition -->
-            <section>
-                <h2>Component Composition Pattern</h2>
-                <pre><code class="language-js small-code">
+        <!-- Component Composition -->
+        <section>
+          <h2 style="font-size: 1.2em">Component Composition Pattern</h2>
+          <pre><code class="language-js small-code" style="width: 110%;max-height: 450px;">
 // components/common/Modal.jsx
 export const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -784,22 +707,22 @@ function UserEditModal({ user, isOpen, onClose }) {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Performance Optimization -->
-            <section>
-                <h2>Performance Optimization Tips</h2>
-                <div class="grid-2">
-                    <div>
-                        <ul class="compact-list">
-                            <li><strong>React.memo</strong> - Prevent re-renders</li>
-                            <li><strong>useMemo</strong> - Memoize calculations</li>
-                            <li><strong>useCallback</strong> - Memoize functions</li>
-                            <li><strong>Code Splitting</strong> - Lazy load</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <pre><code class="language-js small-code">
+        <!-- Performance Optimization -->
+        <section>
+          <h2>Performance Optimization Tips</h2>
+          <div class="grid-2-second">
+            <div>
+              <ul class="compact-list" style="font-size: 0.7em">
+                <li><strong>React.memo</strong> - Prevent re-renders</li>
+                <li><strong>useMemo</strong> - Memoize calculations</li>
+                <li><strong>useCallback</strong> - Memoize functions</li>
+                <li><strong>Code Splitting</strong> - Lazy load</li>
+              </ul>
+            </div>
+            <div>
+              <pre><code class="language-js small-code" style="max-height: 460px; font-size: 0.6em; width: 120%">
 // React.memo example
 const UserCard = React.memo(({ user, onEdit }) => (
   &lt;div className="user-card"&gt;
@@ -815,71 +738,85 @@ const Dashboard = React.lazy(() =>
   import('./Dashboard')
 );
                         </code></pre>
-                    </div>
-                </div>
-            </section>
+            </div>
+          </div>
+        </section>
 
-            <!-- React Server Components Introduction -->
-            <section>
-                <h2>React Server Components (RSC)</h2>
-                <ul class="extra-compact">
-                    <li><strong>Server-Side Rendering</strong> - Components run on the server</li>
-                    <li><strong>Zero Bundle Size</strong> - Server components don't ship to client</li>
-                    <li><strong>Direct Data Access</strong> - Access databases, file systems directly</li>
-                    <li><strong>Automatic Code Splitting</strong> - Only client components are bundled</li>
-                    <li><strong>SEO & Performance</strong> - Faster initial page loads</li>
-                    <li><strong>Streaming</strong> - Progressive enhancement of UI</li>
-                </ul>
-                <p style="margin-top: 15px; font-size: 0.8em;">
-                    <em>The future of React - blending server and client seamlessly</em>
-                </p>
-            </section>
+        <!-- React Server Components Introduction -->
+        <section>
+          <h2>React Server Components (RSC)</h2>
+          <ul class="extra-compact" style="font-size: 0.8em">
+            <li>
+              <strong>Server-Side Rendering</strong> - Components run on the
+              server
+            </li>
+            <li>
+              <strong>Zero Bundle Size</strong> - Server components don't ship
+              to client
+            </li>
+            <li>
+              <strong>Direct Data Access</strong> - Access databases, file
+              systems directly
+            </li>
+            <li>
+              <strong>Automatic Code Splitting</strong> - Only client components
+              are bundled
+            </li>
+            <li>
+              <strong>SEO & Performance</strong> - Faster initial page loads
+            </li>
+            <li><strong>Streaming</strong> - Progressive enhancement of UI</li>
+          </ul>
+          <p style="margin-top: 15px; font-size: 0.8em">
+            <em>The future of React - blending server and client seamlessly</em>
+          </p>
+        </section>
 
-            <!-- Server vs Client Components -->
-            <section>
-                <h2>Server vs Client Components</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Aspect</th>
-                            <th>Server Components</th>
-                            <th>Client Components</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Where they run</td>
-                            <td>Server only</td>
-                            <td>Browser</td>
-                        </tr>
-                        <tr>
-                            <td>Bundle size</td>
-                            <td>Zero (server-only)</td>
-                            <td>Adds to bundle</td>
-                        </tr>
-                        <tr>
-                            <td>Data access</td>
-                            <td>Direct DB/API access</td>
-                            <td>Fetch via APIs</td>
-                        </tr>
-                        <tr>
-                            <td>Interactivity</td>
-                            <td>No state/events</td>
-                            <td>Full interactivity</td>
-                        </tr>
-                        <tr>
-                            <td>Hooks</td>
-                            <td>Limited (no useState)</td>
-                            <td>All hooks available</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+        <!-- Server vs Client Components -->
+        <section>
+          <h2>Server vs Client Components</h2>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Aspect</th>
+                <th>Server Components</th>
+                <th>Client Components</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Where they run</td>
+                <td>Server only</td>
+                <td>Browser</td>
+              </tr>
+              <tr>
+                <td>Bundle size</td>
+                <td>Zero (server-only)</td>
+                <td>Adds to bundle</td>
+              </tr>
+              <tr>
+                <td>Data access</td>
+                <td>Direct DB/API access</td>
+                <td>Fetch via APIs</td>
+              </tr>
+              <tr>
+                <td>Interactivity</td>
+                <td>No state/events</td>
+                <td>Full interactivity</td>
+              </tr>
+              <tr>
+                <td>Hooks</td>
+                <td>Limited (no useState)</td>
+                <td>All hooks available</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-            <!-- RSC Example -->
-            <section>
-                <h2>React Server Components Example</h2>
-                <pre><code class="language-js small-code">
+        <!-- RSC Example -->
+        <section>
+          <h2 style="font-size: 1.2em">React Server Components Example</h2>
+          <pre><code class="language-js small-code" style="max-height: 500px;">
 // app/page.js - Server Component (default)
 import { db } from '@/lib/database';
 import ClientCounter from './ClientCounter';
@@ -905,12 +842,12 @@ export default async function HomePage() {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- Client Component Example -->
-            <section>
-                <h2>Client Components in RSC</h2>
-                <pre><code class="language-js small-code">
+        <!-- Client Component Example -->
+        <section>
+          <h2 style="font-size: 1.2em">Client Components in RSC</h2>
+          <pre><code class="language-js small-code" style="max-height: 500px">
 // ClientCounter.js - Client Component
 'use client'; // This directive makes it a client component
 
@@ -942,49 +879,62 @@ export default function ClientCounter({ initialLikes, postId }) {
   );
 }
                 </code></pre>
-            </section>
+        </section>
 
-            <!-- RSC Benefits & Use Cases -->
-            <section>
-                <h2>RSC Benefits & Use Cases</h2>
-                <div class="grid-2">
-                    <div>
-                        <h4>Benefits</h4>
-                        <ul class="extra-compact">
-                            <li>Faster initial page loads</li>
-                            <li>Better SEO</li>
-                            <li>Reduced bundle size</li>
-                            <li>Direct server data access</li>
-                            <li>Automatic code splitting</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4>Best Use Cases</h4>
-                        <ul class="extra-compact">
-                            <li>Static content rendering</li>
-                            <li>Data-heavy pages</li>
-                            <li>Content management systems</li>
-                            <li>E-commerce product pages</li>
-                            <li>Blog posts & articles</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="margin-top: 20px; font-size: 0.9em;">
-                    <em>Use server components for data fetching, client components for interactivity</em>
-                </p>
-            </section>
+        <!-- RSC Benefits & Use Cases -->
+        <section>
+          <h2>RSC Benefits & Use Cases</h2>
+          <div class="grid-2">
+            <div>
+              <h4>Benefits</h4>
+              <ul class="extra-compact">
+                <li>Faster initial page loads</li>
+                <li>Better SEO</li>
+                <li>Reduced bundle size</li>
+                <li>Direct server data access</li>
+                <li>Automatic code splitting</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Best Use Cases</h4>
+              <ul class="extra-compact">
+                <li>Static content rendering</li>
+                <li>Data-heavy pages</li>
+                <li>Content management systems</li>
+                <li>E-commerce product pages</li>
+                <li>Blog posts & articles</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top: 20px; font-size: 0.9em">
+            <em
+              >Use server components for data fetching, client components for
+              interactivity</em
+            >
+          </p>
+        </section>
 
-            <!-- RSC Frameworks -->
-            <section>
-                <h2>RSC in Practice</h2>
-                <ul class="extra-compact">
-                    <li><strong>Next.js 13+</strong> - App Router with built-in RSC support</li>
-                    <li><strong>Remix</strong> - Full-stack framework with RSC-like patterns</li>
-                    <li><strong>Gatsby</strong> - Static site generation with RSC support</li>
-                    <li><strong>React 18+</strong> - Core RSC support (experimental)</li>
-                </ul>
-                <div style="margin-top: 20px;">
-                    <pre><code class="language-bash small-code">
+        <!-- RSC Frameworks -->
+        <section>
+          <h2>RSC in Practice</h2>
+          <ul class="extra-compact">
+            <li>
+              <strong>Next.js 13+</strong> - App Router with built-in RSC
+              support
+            </li>
+            <li>
+              <strong>Remix</strong> - Full-stack framework with RSC-like
+              patterns
+            </li>
+            <li>
+              <strong>Gatsby</strong> - Static site generation with RSC support
+            </li>
+            <li>
+              <strong>React 18+</strong> - Core RSC support (experimental)
+            </li>
+          </ul>
+          <div style="margin-top: 20px">
+            <pre><code class="language-bash small-code">
 # Getting started with Next.js 13+ App Router
 npx create-next-app@latest my-rsc-app
 cd my-rsc-app
@@ -995,42 +945,61 @@ cd my-rsc-app
 # Create a client component 
 # components/InteractiveButton.js
                     </code></pre>
-                </div>
-                <p style="margin-top: 15px; font-size: 0.8em;">
-                    <em>Next.js App Router is the easiest way to get started with RSC</em>
-                </p>
-            </section>
+          </div>
+          <p style="margin-top: 15px; font-size: 0.8em">
+            <em
+              >Next.js App Router is the easiest way to get started with RSC</em
+            >
+          </p>
+        </section>
 
-            <!-- Q&A -->
-            <section>
-                <div class="centered-content">
-                    <h1>Questions & Discussion</h1>
-                    <p style="font-size: 1.2em; margin-top: 40px;">
-                        Let's discuss your React challenges and experiences!
-                    </p>
-                    <div style="font-size: 60px; margin-top: 30px;">❓</div>
-                </div>
-            </section>
-
-        </div>
+        <!-- Q&A -->
+        <section>
+          <div class="centered-content">
+            <h1>Questions & Discussion</h1>
+            <p style="font-size: 1.2em; margin-top: 40px">
+              Let's discuss your React challenges and experiences!
+            </p>
+            <div style="font-size: 60px; margin-top: 30px">❓</div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
     <script>
-        Reveal.initialize({
-            hash: true,
-            slideNumber: true,
-            plugins: [RevealHighlight],
-            transition: 'slide',
-            backgroundTransition: 'fade',
-            controls: true,
-            progress: true,
-            center: true,
-            touch: true,
-            loop: false,
-            keyboard: true
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        plugins: [RevealHighlight],
+        transition: "slide",
+        backgroundTransition: "fade",
+        controls: true,
+        progress: true,
+        center: true,
+        touch: true,
+        loop: false,
+        keyboard: true,
+      });
+
+      // Handle react-intro fragment visibility
+      const reactIntro = document.querySelector(".react-intro");
+      const reactFragment = reactIntro?.querySelector(".fragment");
+
+      if (reactFragment) {
+        Reveal.on("fragmentshown", (event) => {
+          if (event.fragment === reactFragment) {
+            reactIntro.classList.add("show-content");
+          }
         });
+
+        Reveal.on("fragmenthidden", (event) => {
+          if (event.fragment === reactFragment) {
+            reactIntro.classList.remove("show-content");
+          }
+        });
+      }
     </script>
-</body>
+  </body>
 </html>

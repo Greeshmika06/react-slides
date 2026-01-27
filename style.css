@@ -1,0 +1,324 @@
+:root {
+  --main-bg-color: #191919;
+  --main-text-color: #f5f5f5;
+  --accent-color: #61dafb;
+  --secondary-color: #bd9df4;
+  --code-bg: #2d2d2d;
+}
+
+.reveal {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(128, 90, 213, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(168, 85, 247, 0.2),
+      transparent 35%
+    ),
+    #000000;
+  color: var(--main-text-color);
+}
+
+.reveal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='48' viewBox='0 0 56 48'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'%3E%3Cpath d='M28 1 L55 14 L55 34 L28 47 L1 34 L1 14 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 70px;
+  pointer-events: none;
+}
+
+.react-logo {
+  width: 240px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 14px rgba(97, 218, 251, 0.6));
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.presented-by {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.presented-text {
+  font-size: 0.5em;
+  letter-spacing: 1.5px;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.presenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.presenter img {
+  width: 40px;
+}
+
+.presenter span {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--accent-color);
+  text-transform: none;
+  margin-bottom: 20px;
+}
+
+.reveal h1 {
+  color: whitesmoke;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.2em;
+  font-weight: 600;
+}
+
+.reveal h2 {
+  font-size: 1.6em;
+  font-weight: 500;
+  color: var(--secondary-color);
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.reveal h3 {
+  font-size: 1.3em;
+}
+
+.reveal h4 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.reveal p,
+.reveal li {
+  font-size: 1em;
+  line-height: 1.4;
+  margin-bottom: 0.6em;
+}
+
+.reveal code {
+  background-color: transparent;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  font-size: 0.9em;
+}
+
+.reveal pre {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+.reveal pre code {
+  padding: 0px;
+  line-height: 1.3;
+  font-size: 0.75em;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Bright custom cursor when hovering code blocks */
+.reveal pre code:hover {
+  cursor:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='3.5' result='blur'/%3E%3CfeMerge%3E%3CfeMergeNode in='blur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23glow)'%3E%3C!-- arrow head --%3E%3Cpath d='M22 6 L8 16 L22 26' fill='none' stroke='%23ff1a1a' stroke-width='4.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C!-- long tail --%3E%3Cline x1='8' y1='16' x2='30' y2='16' stroke='%23ff1a1a' stroke-width='4.5' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E")
+      6 16,
+    pointer;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin: 0px 0;
+  max-width: 100%;
+}
+
+.grid-2-second {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  margin: 50px 0;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.frontend-logo {
+  background-color: #61dafb;
+  color: #20232a;
+  font-weight: bold;
+  padding: 30px;
+  font-size: 100px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.75em;
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid #444;
+  padding: 6px;
+  text-align: left;
+}
+
+.comparison-table th {
+  background-color: var(--accent-color);
+  color: #20232a;
+}
+
+.folder-structure {
+  font-family: "Courier New", monospace;
+  background-color: var(--code-bg);
+  padding: 12px;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 0.7em;
+  line-height: 1.3;
+}
+
+.small-code {
+  font-size: 1em !important;
+}
+
+.compact-list li {
+  font-size: 0.85em;
+  margin-bottom: 0.3em;
+}
+
+.extra-compact li {
+  font-size: 0.8em;
+  margin-bottom: 0.2em;
+}
+
+.two-column-code {
+  columns: 2;
+  column-gap: 20px;
+}
+/* React Intro Slide Animations */
+.react-intro {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100% !important;
+  gap: 0 !important;
+}
+
+.react-title-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: flex 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.react-intro.show-content .react-title-container {
+  flex: 0 0 auto;
+}
+
+.react-title {
+  margin: 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.react-title::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 40px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(189, 157, 244, 0.8),
+    transparent
+  );
+  filter: blur(15px);
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.react-intro.show-content .react-title::after {
+  opacity: 0;
+}
+
+.react-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.react-content-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navigation controls styling */
+.reveal .controls button {
+  color: white !important;
+  filter: none !important;
+}
+
+.reveal .controls button::after {
+  background-color: white !important;
+}
+
+.reveal .controls button svg {
+  fill: white !important;
+  stroke: white !important;
+}
+
+/* Text selection styling */
+::selection {
+  background-color: var(--secondary-color);
+  color: #191919;
+}
+
+.reveal ::selection {
+  background-color: var(--secondary-color);
+  color: #191919;
+}
