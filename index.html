@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React & Frontend Modularisation</title>
+    <title>React Session</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css"
@@ -60,7 +60,7 @@
               </g>
               <circle cx="420.9" cy="296.5" r="35" fill="#61DAFB" />
             </svg>
-            <h1>React & Frontend Modularisation</h1>
+            <h1>Introduction to React</h1>
             <div class="presented-by">
               <span class="presented-text">Presented by</span>
 
@@ -429,45 +429,6 @@ function UserList() {
     &lt;ul&gt;
       {users?.map(user => &lt;li key={user.id}&gt;{user.name}&lt;/li&gt;)}
     &lt;/ul&gt;
-  );
-}
-                </code></pre>
-        </section>
-
-        <!-- Component Lifecycle -->
-        <section>
-          <h2 style="font-size: 1.2em">Component Lifecycle with Hooks</h2>
-          <pre><code class="language-js small-code" style="max-height: 450px">
-function LifecycleDemo() {
-  const [count, setCount] = useState(0);
-
-  // Mount + Update (componentDidMount + componentDidUpdate)
-  useEffect(() => {
-    document.title = `Count: ${count}`;
-  });
-
-  // Mount only (componentDidMount)
-  useEffect(() => {
-    console.log('Component mounted');
-    
-    // Cleanup (componentWillUnmount)
-    return () => {
-      console.log('Component will unmount');
-    };
-  }, []); // Empty dependency array
-
-  // Watch specific value
-  useEffect(() => {
-    if (count > 0) {
-      console.log(`Count changed to ${count}`);
-    }
-  }, [count]);
-
-  return (
-    &lt;div&gt;
-      &lt;p&gt;Count: {count}&lt;/p&gt;
-      &lt;button onClick={() => setCount(count + 1)}&gt;+&lt;/button&gt;
-    &lt;/div&gt;
   );
 }
                 </code></pre>
